@@ -1,4 +1,4 @@
-function Get-PasswordFile { 
+function run_me { 
   
     [CmdletBinding()] 
     Param
