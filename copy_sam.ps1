@@ -1,4 +1,4 @@
-function run_me { 
+function copy_sam { 
   
     [CmdletBinding()] 
     Param
